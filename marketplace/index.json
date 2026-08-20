@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "templates": [
+    {
+      "id": "default",
+      "type": "spec",
+      "name": "Default + Ponytail 边界规则",
+      "description": "Thinking guides（code-reuse / cross-layer）+ Agent Workflow Boundary Guide，让极简类 ruleset（ponytail/YAGNI）不干扰 Trellis 流程。",
+      "path": "marketplace/specs/default",
+      "tags": ["guides", "thinking", "ponytail", "boundary", "workflow"]
+    }
+  ]
+}
