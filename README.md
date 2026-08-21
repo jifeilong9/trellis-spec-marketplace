@@ -21,8 +21,9 @@ apply-boundary.sh                    # 本地幂等注入脚本（git 托管前�
 
 | 场景 | 方法 |
 |---|---|
-| 已推到 GitHub，想新项目自动装 | `trellis init --registry gh:jifeilong9/trellis-spec-marketplace/marketplace --template default` |
-| 纯本地、不依赖 git | `bash apply-boundary.sh <项目目录>` |
+| **全新项目**（registry 作唯一 spec 源，全套自动） | `trellis init --registry gh:jifeilong9/trellis-spec-marketplace/marketplace --template default` |
+| **已有项目/默认脚手架**（append 只补文件，不覆盖 index.md） | `trellis init --registry .../marketplace --template default --append` 后再跑 `bash apply-boundary.sh <项目>` 完成 index 注册 |
+| 纯本地、不依赖 git | `bash apply-boundary.sh <项目目录>`（幂等，补文件 + index 注册一把成） |
 
 详见 `marketplace/specs/default/README.md`。
 
