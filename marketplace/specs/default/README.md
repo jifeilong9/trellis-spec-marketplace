@@ -1,11 +1,10 @@
 # Template: default
 
-Spec 模板，安装后落在 `.trellis/spec/guides/`：
+Spec 模板，安装后落在 `.trellis/spec/`，与官方默认脚手架内容对齐（外加边界规则）：
 
-- `index.md` — Thinking Guides 索引（已注册 Agent Workflow Boundary 触发段）
-- `code-reuse-thinking-guide.md` — 复用思维指南（默认模板自带）
-- `cross-layer-thinking-guide.md` — 跨层思维指南（默认模板自带）
-- `agent-workflow-boundary.md` — **边界规则**：Trellis 决定流程与产物，极简类规则（ponytail / YAGNI）只管实现细节，冲突时以 Trellis 为准
+- `backend/`、`frontend/` — 默认规范占位（与默认 `trellis init` 一致）
+- `guides/` — thinking guides + `agent-workflow-boundary.md`（**边界规则**：Trellis 决定流程与产物，极简类规则（ponytail / YAGNI）只管实现细节，冲突时以 Trellis 为准）
+- `guides/index.md` — 已注册边界规则的发现入口
 
 ## 前提（重要）
 
@@ -16,12 +15,14 @@ Trellis CLI 的 `--registry` 只支持 git 托管源（`gh`/`github`/`gitlab`/`b
 仓库已推送到 `https://github.com/jifeilong9/trellis-spec-marketplace`。
 
 ```bash
-# ✅ 全新项目（推荐）：registry 作唯一 spec 源 → 全套 + index 注册，一条命令自动装
+# ✅ 全新项目（推荐）：模板已含 backend/frontend/guides 全套，一条命令自动装，无需本地脚本
 trellis init -u your-name --claude --pi --registry gh:jifeilong9/trellis-spec-marketplace/marketplace --template default
+```
 
-# ⚠️ 已有项目：--append 只补缺失文件（agent-workflow-boundary.md 会落位），
-#    但不会覆盖已有的 guides/index.md → 规范文件存在但不被发现。
-#    补完请再跑一次 apply-boundary.sh 完成 index 注册（幂等）：
+已有项目（默认脚手架/旧 Trellis 项目）想补边界规则：
+
+```bash
+# --append 会补缺失文件，但不会覆盖已有的 guides/index.md → 需再跑一次 apply 脚本完成注册
 cd <项目>
 trellis init --registry gh:jifeilong9/trellis-spec-marketplace/marketplace --template default --append
 bash E:/code/_trellis-spec-marketplace/apply-boundary.sh <项目>
