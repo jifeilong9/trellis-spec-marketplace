@@ -10,17 +10,18 @@
 
 ### ① 全新项目（推荐）：一条命令，全从 git
 
+> ⚠️ Windows cmd / PowerShell：**不要拆行**，下面整行复制（`\` 换行是 bash 语法，Windows 不认）：
+
 ```bash
 cd <新项目目录>
 
-trellis init -u your-name --claude --pi \
-  --registry gh:jifeilong9/trellis-spec-marketplace/marketplace \
-  --template default
+trellis init -u your-name --claude --pi --registry gh:jifeilong9/trellis-spec-marketplace/marketplace --template default
 ```
 
-- `your-name` 换成你的开发者名
+- `your-name` 换成你的开发者名（如 `jifeilong9`）
 - 想用别的平台就去掉对应 flag，或改用 `trellis init --registry ... --template default` 交互式选
 - 产出：`backend/` + `frontend/` + `guides/`（含边界规则注册）≈ 官方默认脚手架 + 边界
+- 常见报错排查：`error: option '-t, --template <name>' argument missing` = 命令被截断/拆行，`--template` 后面必须带上 `default`
 
 ### ② 已有项目补边界（旧脚手架 / 无 Trellis 项目）
 
